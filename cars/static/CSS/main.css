@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&family=Yanone+Kaffeesatz&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+body {
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-size: 22px;
+}
+
+h1, h4 {
+    font-family: 'Russo One', sans-serif;
+    margin: auto;
+}
+
+.table-wrapper {
+    padding: 5px;
+    border: 1px solid silver;
+    border-radius: 5px;
+    min-height: 691px;
+    max-height: 97vh;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.table-wrapper td {
+    font-size: 15px;
+}
+
+tbody tr {
+    line-height: 16px;
+    font-family: 'Roboto', sans-serif;
+}
+
+tbody tr:hover {
+    border: solid 1px orange;
+}
+
+a h1 {
+    color: rgba(0, 0, 0, 0.9);
+}
+
+a:hover {
+    text-decoration: none !important;
+}
+
+.site-menu {
+    padding: 20px;
+    border: 1px solid silver;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+input[type=submit] {
+    margin-top: 10px;
+}
+
+.counter {
+    color: rgba(0, 0, 0, 0.8);
+    font-size: 18px;
+}
+
+.color-box {
+    border: solid 1px grey;
+    border-radius: 3px;
+    width: 30px;
+    height: 16px;
+}
+
+.btn {
+    font-size: 16px;
+    font-family: 'Russo One', sans-serif;
+    background-color: orange;
+    color: white;
+    width: 100%;
+}
+
+.btn:hover {
+    background-color: lime;
+    color: white;
+}
+
+.not-found-text {
+    color: rgba(0, 0, 0, 0.7);
+}

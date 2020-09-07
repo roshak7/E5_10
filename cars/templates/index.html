@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-lg-3">
+        <a href="/">
+            <div class="row">
+                <h1 class="mt-3">Car Finder</h1>
+            </div>
+        </a>
+        <div class="row">
+            <h4 class="counter">машин найдено: {{ cars.count }}</h4>
+        </div>
+        <div class="row">
+            <form class="" method="get">
+                <div class="site-menu shadow p-3 mb-5 bg-white rounded">
+                    <div class="form-group">
+
+                        <label for="car-manufacturer">производитель</label>
+                        <select class="form-control" name="car-manufacturer">
+                            <option value="">-----</option>
+                            {% for m in manufacturers %}
+                            <option value="{{ m }}">{{ m }}</option>
+                            {% endfor %}
+                        </select>
+
+                        <label for="car-model">модель</label>
+                        <select class="form-control" name="car-model">
+                            <option value="">-----</option>
+                            {% for m in models %}
+                            <option value="{{ m.model }} | {{ m.manufacturer }}">{{ m.model }} ({{ m.manufacturer }})</option>
+                            {% endfor %}
+                        </select>
+
+                        <label for="car-transmission">коробка</label>
+                        <select class="form-control" name="car-transmission">
+                            <option value="">-----</option>
+                            <option value="0">механика</option>
+                            <option value="1">автомат</option>
+                            <option value="2">робот</option>
+                        </select>
+
+                        <label for="car-color">цвет</label>
+                        <select class="form-control" name="car-color">
+                            <option value="">-----</option>
+                            {% for color in colors %}
+                            <option value="{{ color.pk }}">{{ color.name }}</option>
+                            {% endfor %}
+                        </select>
+
+                        <label for="year-min">год от</label>
+                        <input class="form-control" min=1900 type="number" name="year-min" value="">
+                        <label for="year-max">год до</label>
+                        <input class="form-control" min=1900 type="number" name="year-max" value="">
+
+                        <input type="submit" name="submit" value="применить" class="btn mt-4">
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="col-lg-9">
+        <div class="table-wrapper shadow p-3 mb-5 bg-white rounded">
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Производитель</th>
+                        <th scope="col">Модель</th>
+                        <th scope="col">Коробка</th>
+                        <th scope="col">Год</th>
+                        <th scope="col">Цвет</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for car in cars %}
+                    <tr>
+                        <td>{{ car.manufacturer }}</td>
+                        <td>{{ car.model }}</td>
+                        <td>{{ car.transmission_display }}</td>
+                        <td>{{ car.year }}</td>
+                        <td>
+                            <div title="{{ color.name }}" class="color-box" style="background-color:{{ car.color.hex }};">
+                            </div>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td class="not-found-text text-center" colspan="5">
+                            <h4>ничего не найдено</h4>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% endblock %}
+    </div>
+</div>
